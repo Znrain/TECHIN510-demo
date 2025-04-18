@@ -44,3 +44,30 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+# AI-Powered Job Preparation Platform for Designers
+
+## Project Scope
+This platform helps designers prepare for job applications by analyzing their resumes and portfolios. It generates customized mock interview questions and summarizes feedback from audio recordings. The goal is to streamline job preparation, improve portfolio quality, and help users practice interview skills.
+
+## Target Users
+- Graphic, UX, UI, and product designers preparing for job applications.
+- Designers seeking structured portfolio improvement and interview preparation.
+
+## Features
+- Upload resume and portfolio for AI analysis.
+- Upload audio feedback (interviews or mentor reviews) for AI summarization.
+- Generate customized mock interview questions.
+- Provide improvement suggestions even without audio input.
+
+## Timeline
+- Week 2: Project setup, basic web interface
+- Week 3–4: Integrate AI for resume & portfolio analysis
+- Week 4–5: Add audio upload and feedback summarization
+- Week 6: Testing and final presentation
+
+## Contact Information
+- **Client:** Oulu Zhang
+- **Developer:** Xinyu Wang
+
+## Repository
+https://github.com/Znrain/TECHIN510-demo.git
