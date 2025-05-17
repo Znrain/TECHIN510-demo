@@ -1,6 +1,40 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
+import PortfolioReview from './pages/PortfolioReview';
+import PortfolioDetail from './pages/PortfolioDetail';
+import LogoComponent from './components/Logo';
+
+const BackgroundGlow = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-image: url('/images/glow.png');
+  background-size: contain;
+  background-position: right top;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+`;
+
+const BackgroundGlow2 = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 100vh;
+  background-image: url('/images/glow2.png');
+  background-size: contain;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+`;
 
 const AppContainer = styled.div`
   background: #151515;
@@ -32,34 +66,6 @@ const TopBar = styled.div`
   border-radius: 16px;
 `;
 
-const BackgroundGlow = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100vh;
-  background-image: url('/images/glow.png');
-  background-size: contain;
-  background-position: right top;
-  background-repeat: no-repeat;
-  z-index: 0;
-  pointer-events: none;
-`;
-
-const BackgroundGlow2 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50%;
-  height: 100vh;
-  background-image: url('/images/glow2.png');
-  background-size: contain;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  z-index: 0;
-  pointer-events: none;
-`;
-
 const Content = styled.div`
   position: relative;
   z-index: 1;
@@ -69,7 +75,7 @@ const Content = styled.div`
   padding-bottom: 8rem;
 `;
 
-const Logo = styled.div`
+const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -300,128 +306,172 @@ const GetStartedButton = styled(motion.button)`
   }
 `;
 
-function App() {
+const NavLinks = styled.nav`
+  display: flex;
+  gap: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  align-items: center;
+`;
+
+const NavLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #FFD700;
+  }
+`;
+
+const FeatureCards = styled.div`
+  display: flex;
+  gap: 4rem;
+  margin: 0 auto;
+  max-width: 1200px;
+`;
+
+const FeatureCardTitle = styled.h3`
+  font-family: 'Press Start 2P', monospace;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-align: center;
+  transform: scaleX(0.75);
+  transform-origin: center;
+  width: 100%;
+  white-space: normal;
+  padding: 0 2rem;
+`;
+
+const FeatureCardDescription = styled.p`
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+`;
+
+const FeatureButton = styled(motion.button)`
+  background: #FFFFFF;
+  color: #000000;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+const App: React.FC = () => {
   return (
-    <AppContainer>
-      <BackgroundGlow />
-      <BackgroundGlow2 />
-      <TopBarContainer>
-        <Logo>
-          <LogoText>DP</LogoText>
-          <LogoSubtext>DesignPilot</LogoSubtext>
-        </Logo>
-        <TopBar>
-          <Nav>
-            <a href="#portfolio-review">Portfolio Review</a>
-            <a href="#mock-interview">Mock Interview</a>
-            <a href="#audio-summary">Audio Summary</a>
-          </Nav>
-        </TopBar>
-        <SignInButton
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Sign In
-        </SignInButton>
-      </TopBarContainer>
-      <Content>
-        <Hero>
-          <HeroTitle>
-            Smarter design career prep,
-            built for creatives.
-          </HeroTitle>
-          <HeroDescription>
-            DesignPilot helps you refine your portfolio, review real feedback, and train for interviews — all in one place.
-          </HeroDescription>
-          <GetStartedButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started
-          </GetStartedButton>
-        </Hero>
+    <Router>
+      <AppContainer>
+        <BackgroundGlow />
+        <BackgroundGlow2 />
+        <TopBarContainer>
+          <LogoComponent />
+          <NavLinks>
+            <NavLink to="/portfolio-review">Portfolio Review</NavLink>
+            <NavLink to="/mock-interview">Mock Interview</NavLink>
+            <NavLink to="/audio-summary">Audio Summary</NavLink>
+          </NavLinks>
+          <SignInButton>Sign In</SignInButton>
+        </TopBarContainer>
 
-        <Section>
-          <SectionTitle>How does it work?</SectionTitle>
-          <StepsContainer>
-            <Step>
-              <StepNumber>Step1</StepNumber>
-              <StepIcon>
-                <img src="/icons/upload.svg" alt="Upload" />
-              </StepIcon>
-              <StepTitle>Upload</StepTitle>
-              <StepDescription>
-                Submit your resume, portfolio, and (optional) audio feedback to get started.
-              </StepDescription>
-            </Step>
-            <Step>
-              <StepNumber>Step2</StepNumber>
-              <StepIcon>
-                <img src="/icons/review.svg" alt="Review" />
-              </StepIcon>
-              <StepTitle>Review</StepTitle>
-              <StepDescription>
-                Let AI analyze your content and generate insights, feedback, and mock interview questions.
-              </StepDescription>
-            </Step>
-            <Step>
-              <StepNumber>Step3</StepNumber>
-              <StepIcon>
-                <img src="/icons/iterate.svg" alt="Iterate" />
-              </StepIcon>
-              <StepTitle>Iterate</StepTitle>
-              <StepDescription>
-                Use the suggestions to polish your work and practice for your next big opportunity.
-              </StepDescription>
-            </Step>
-          </StepsContainer>
-        </Section>
+        <Routes>
+          <Route path="/" element={
+            <Content>
+              <Hero>
+                <HeroTitle>Smarter design career prep, built for creatives.</HeroTitle>
+                <HeroDescription>
+                  DesignPilot helps you refine your portfolio, review real feedback,
+                  and train for interviews — all in one place.
+                </HeroDescription>
+                <GetStartedButton>Get Started →</GetStartedButton>
+              </Hero>
 
-        <Features>
-          <FeatureTitle>What will you gain?</FeatureTitle>
-          <FeatureCard>
-            <FeatureHeading>Refine your portfolio with AI insight</FeatureHeading>
-            <FeatureDescription>
-              Upload your work and get smart suggestions to improve each project.
-              Identify weak points, enhance storytelling, and align with industry expectations.
-            </FeatureDescription>
-            <Button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Upload Portfolio
-            </Button>
-          </FeatureCard>
-          <FeatureCard>
-            <FeatureHeading>Train with personalized interview questions</FeatureHeading>
-            <FeatureDescription>
-              AI generates mock interview questions tailored to your background and portfolio.
-              Practice with real-world prompts and feel confident in your next interview.
-            </FeatureDescription>
-            <Button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Start Mock Interview
-            </Button>
-          </FeatureCard>
-          <FeatureCard>
-            <FeatureHeading>Turn feedback recordings into action plans</FeatureHeading>
-            <FeatureDescription>
-              Upload audio from mentor reviews or mock interviews.
-              AI will extract key suggestions and map them to the right portfolio sections.
-            </FeatureDescription>
-            <Button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Upload Audio
-            </Button>
-          </FeatureCard>
-        </Features>
-      </Content>
-    </AppContainer>
+              <Section>
+                <SectionTitle>How does it work?</SectionTitle>
+                <StepsContainer>
+                  <Step>
+                    <StepNumber>Step1</StepNumber>
+                    <StepIcon>
+                      <img src="/icons/upload.svg" alt="Upload" />
+                    </StepIcon>
+                    <StepTitle>Upload</StepTitle>
+                    <StepDescription>
+                      Submit your resume, portfolio, and (optional) audio
+                      feedback to get started.
+                    </StepDescription>
+                  </Step>
+                  <Step>
+                    <StepNumber>Step2</StepNumber>
+                    <StepIcon>
+                      <img src="/icons/review.svg" alt="Review" />
+                    </StepIcon>
+                    <StepTitle>Review</StepTitle>
+                    <StepDescription>
+                      Let AI analyze your content and generate insights,
+                      feedback, and mock interview questions.
+                    </StepDescription>
+                  </Step>
+                  <Step>
+                    <StepNumber>Step3</StepNumber>
+                    <StepIcon>
+                      <img src="/icons/iterate.svg" alt="Iterate" />
+                    </StepIcon>
+                    <StepTitle>Iterate</StepTitle>
+                    <StepDescription>
+                      Use the suggestions to polish your work and practice for
+                      your next big opportunity.
+                    </StepDescription>
+                  </Step>
+                </StepsContainer>
+              </Section>
+
+              <Features>
+                <FeatureTitle>What will you gain?</FeatureTitle>
+                <FeatureCards>
+                  <FeatureCard>
+                    <FeatureCardTitle>Refine your portfolio with AI insight</FeatureCardTitle>
+                    <FeatureCardDescription>
+                      Upload your work and get smart suggestions to improve each project.
+                      Identify weak points, enhance storytelling, and align with industry expectations.
+                    </FeatureCardDescription>
+                    <FeatureButton>Upload Portfolio</FeatureButton>
+                  </FeatureCard>
+                  <FeatureCard>
+                    <FeatureCardTitle>Train with personalized interview questions</FeatureCardTitle>
+                    <FeatureCardDescription>
+                      AI generates mock interview questions tailored to your background and portfolio.
+                      Practice with real-world prompts and feel confident in your next interview.
+                    </FeatureCardDescription>
+                    <FeatureButton>Start Mock Interview</FeatureButton>
+                  </FeatureCard>
+                  <FeatureCard>
+                    <FeatureCardTitle>Turn feedback recordings into action plans</FeatureCardTitle>
+                    <FeatureCardDescription>
+                      Upload audio from mentor reviews or mock interviews.
+                      AI will extract key suggestions and map them to the right portfolio sections.
+                    </FeatureCardDescription>
+                    <FeatureButton>Upload Audio</FeatureButton>
+                  </FeatureCard>
+                </FeatureCards>
+              </Features>
+            </Content>
+          } />
+          <Route path="/portfolio-review" element={<PortfolioReview />} />
+          <Route path="/portfolio-detail" element={<PortfolioDetail />} />
+        </Routes>
+      </AppContainer>
+    </Router>
   );
-}
+};
 
 export default App;
