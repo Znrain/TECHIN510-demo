@@ -31,13 +31,13 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
@@ -71,3 +71,45 @@ This platform helps designers prepare for job applications by analyzing their re
 
 ## Repository
 https://github.com/Znrain/TECHIN510-demo.git
+
+## Developer Milestone 2 - Meeting Note and Progress Report
+
+Project: DesignPilot - AI-powered job prep platform for designers  
+Date: May 15, 2025  
+Developer: Xinyu Wang  
+Client: Oulu Zhang
+
+### Features Completed or Near Completion:
+--------------------------------------
+1. Portfolio Upload and Review Page:
+ - Users can upload PDF portfolios.
+ - Extracted text is sent to GPT-3.5 for content-based suggestions.
+ - Suggestions are displayed alongside uploaded file name.
+2. Homepage and Navigation:
+ - Fully responsive homepage with working navigation bar.
+ - Pages for Upload, Suggestions, and Mock Interview accessible via sidebar.
+3. Mock Interview Generation (Prototype):
+ - Hardcoded example questions now displayed for uploaded resumes.
+ - AI integration planned as final step (currently simulates functionality).
+4. Feedback Handling:
+ - GitHub Issues have been opened by client for PDF parsing and text overflow bugs.
+ - Suggestions for better UX layout (e.g., side-by-side view) have been implemented.
+
+### Client Feedback Addressed:
+---------------------------
+- Adjusted layout of suggestion panel to avoid text overflow.
+- Handled large file upload error and improved status messages.
+- Outstanding: Real GPT API integration for mock interview is pending.
+
+### README Update Summary:
+----------------------
+- Setup instructions (virtual env, requirements install, Streamlit run)
+- Configuration of OpenAI API key and usage notes
+- Description of each feature module and usage guide
+- Known issues: No real-time streaming yet; placeholder data still used in one area
+
+### Reflection:
+-----------
+The project is nearly complete. Core features are working end-to-end.
+Client feedback has helped refine UI and improve flow. Final task is to connect
+mock interview logic to actual GPT API and polish file export features.
