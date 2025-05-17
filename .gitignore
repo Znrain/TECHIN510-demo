@@ -1,1 +1,4 @@
 node_modules
+
+# 忽略所有环境变量文件
+backend/.env
